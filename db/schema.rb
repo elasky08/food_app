@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924022927) do
+ActiveRecord::Schema.define(version: 20160926234724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,8 +72,10 @@ ActiveRecord::Schema.define(version: 20160924022927) do
     t.integer  "menu_item_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "tag_id"
     t.index ["menu_item_id"], name: "index_taggings_on_menu_item_id", using: :btree
     t.index ["order_id"], name: "index_taggings_on_order_id", using: :btree
+    t.index ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
   end
 
   create_table "tags", force: :cascade do |t|
@@ -99,10 +101,12 @@ ActiveRecord::Schema.define(version: 20160924022927) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
+    t.integer  "voter_id"
+    t.integer  "voted_id"
+    t.index ["voted_id"], name: "index_votes_on_voted_id", using: :btree
+    t.index ["voter_id"], name: "index_votes_on_voter_id", using: :btree
   end
 
   add_foreign_key "likes", "reviews"
@@ -114,5 +118,7 @@ ActiveRecord::Schema.define(version: 20160924022927) do
   add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "menu_items"
   add_foreign_key "taggings", "orders"
-  add_foreign_key "votes", "users"
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "votes", "users", column: "voted_id"
+  add_foreign_key "votes", "users", column: "voter_id"
 end
