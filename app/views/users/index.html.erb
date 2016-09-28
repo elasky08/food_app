@@ -1,0 +1,10 @@
+<h1>All bakers</h1>
+<div>
+  <% @users.each do |u| %>
+  <h2><%= link_to u.shop_name, user_path(u) %></h2>
+  <p><%= u.full_address %></p>
+  <hr>
+  <% end %>
+</div>
+
+<%= paginate @users %>

@@ -5,7 +5,8 @@ class User < ApplicationRecord
   has_many :orders, through: :order_items
   has_many :reviews
   has_many :menu_items, dependent: :nullify
-  # def voteds
-  #   User.joins(:votes).where(votes: Vote.where(voted_id: id))
-  # end
+  
+  def full_address
+    "#{apartment_number} #{street_number} #{street}, #{city}, #{state} #{country}".squeeze(" ").strip.titleize
+  end
 end
