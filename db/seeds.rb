@@ -14,10 +14,10 @@
 #               shop_name: Faker::Company.name
 # end
 
-MENU_ITEMS_TO_CREATE = 120
-
-MENU_ITEMS_TO_CREATE.times do
-  MenuItem.create food_name: Faker::Food.ingredient,
-                  price: Faker::Commerce.price,
-                  user_id: Faker::Number.between(1, 120)
-end
+# MENU_ITEMS_TO_CREATE = 120
+#
+# MENU_ITEMS_TO_CREATE.times do
+#   MenuItem.create food_name: Faker::Food.ingredient,
+#                   price: Faker::Commerce.price,
+#                   user_id: Faker::Number.between(1, 120)
+# end

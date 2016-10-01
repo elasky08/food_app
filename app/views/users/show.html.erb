@@ -6,3 +6,22 @@
 <hr>
 <% end %>
 </div>
+
+<div>
+  <h3>Create Review</h3>
+  <%= @review.errors.full_messages.join(", ") unless @review.nil? %>
+  <%= form_for [@user, @review] do |f| %>
+  <div>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <div>
+    <%= f.submit "Submit", class: "btn btn-primary btn-xs" %>
+  </div>
+  <% end %>
+</div>
+<div>
+  <% @user.reviews.each do |review| %>
+  <%= review.body %>
+  <hr />
+  <% end %>
+</div>

@@ -1,8 +1,18 @@
 <h1>All bakers</h1>
+<div class="navbar-form">
+<%= form_tag users_path, :method => 'get' do %>
+<%= text_field_tag :search, params[:search], class: 'form-control' %>
+<%= submit_tag "Search", class: 'btn btn-default'%>
+<!-- <%# submit_tag "Search", :name => nil %> why is there :name => nil ? I don't know-->
+<% end %>
+</div>
 <div>
   <% @users.each do |u| %>
   <h2><%= link_to u.shop_name, user_path(u) %></h2>
+  <p><%= u.shop_name %></p>
   <p><%= u.full_address %></p>
+  <p><%= u.first_name %></p>
+  <p><%= u.last_name %></p>
   <hr>
   <% end %>
 </div>

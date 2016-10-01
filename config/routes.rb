@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   get "/contact" => "contact#new", as: :new_contact
   post "/contact" => "contact#create", as: :contact
 
-  resources :users do
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
+  end
+
+  resources :users, only: [:new, :create, :index, :show] do
     resources :orders
     resources :votes
     resources :reviews do
@@ -15,9 +19,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :sessions do
-    delete :destroy, on: :collection
-  end
 
   root "home#index"
 end

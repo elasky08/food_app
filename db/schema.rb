@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927213451) do
+ActiveRecord::Schema.define(version: 20161001005159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(version: 20160927213451) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "active",     default: false
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
@@ -94,11 +95,14 @@ ActiveRecord::Schema.define(version: 20160927213451) do
     t.string   "city"
     t.string   "state"
     t.integer  "telephone"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "country"
     t.string   "shop_name"
     t.text     "description"
+    t.string   "user_type",        default: "buyer"
+    t.string   "password_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
   create_table "votes", force: :cascade do |t|

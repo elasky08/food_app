@@ -7,6 +7,27 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class=" nav navbar-nav navbar-right">
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "About", about_path %></li>
+    <li><%= link_to "Shops", users_path %></li>
+    <li><%= link_to "Contact", new_contact_path %></li>
+    <!-- <li><%# link_to "Sign up", new_user_path %></li> -->
+      <% if user_signed_in? %>
+      <li><a>Welcome <%= current_user.first_name %></a></li>
+      <li><%= link_to "sign out", sessions_path, method: :delete %></li>
+      <% else %>
+      <li><%= link_to "Sign Up", new_user_path %></li>
+      <li><%= link_to "Sign In", new_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</nav>
+<div class="flash-message">
+  <%= flash[:notice] || flash[:alert] %>
+</div>
 
   <body>
     <%= yield %>
