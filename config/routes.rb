@@ -9,16 +9,18 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create, :index, :show] do
+    resources :menu_items do
+      resources :tags
+    end
     resources :orders
     resources :votes
     resources :reviews do
       resources :likes
     end
-    resources :menu_items do
-      resources :tags
-    end
   end
 
-
+  resources :menu_items, only: [:show] do
+    resources :tags
+  end
   root "home#index"
 end

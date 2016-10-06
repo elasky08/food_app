@@ -1,6 +1,6 @@
 <h1>sign up</h1>
-<%= @user.errors.full_messages.join(", ") %>
-<%= form_for @user do |f| %>
+  <%= @user.errors.full_messages.join(", ") %>
+  <%= form_for @user do |f| %>
 <div>
   <%= f.label :first_name %>
   <%= f.text_field :first_name, class:"form-control" %>
@@ -49,18 +49,5 @@
   <%= f.label :telephone %>
   <%= f.text_field :telephone, class:"form-control" %>
 </div>
-<hr>
-<div>
-  <%= f.label :shop_name %>
-  <%= f.text_field :shop_name, class:"form-control" %>
-</div>
-<div>
-  <%= f.label :description %>
-  <%= f.text_field :description, class:"form-control" %>
-</div>
-<!-- <div>
-  <%# f.label :menu_item %>
-  <%# f.text_field :menu_items, class:"form-control" %>
-</div> -->
 <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>

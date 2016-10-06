@@ -1,0 +1,24 @@
+<h1>Your Shop</h1>
+<%= @user.errors.full_messages.join(", ") %>
+<%= form_for @user do |f| %>
+<div>
+  <%= f.label :shop_name %>
+  <%= f.text_field :shop_name, class:"form-control" %>
+</div>
+<div>
+  <%= f.label :description %>
+  <%= f.text_field :description, class:"form-control" %>
+</div>
+<%= f.submit %>
+<% end %>
+
+
+<h3>Add food to your shop</h3>
+<%= @menu_item.errors.full_messages.join(", ") %>
+<%= form_for @menu_item do |food| %>
+<div>
+  <%= food.label :menu_item %>
+  <%= food.text_field :menu_items, class:"form-control" %>
+</div>
+<%= food.submit %>
+<% end %>
