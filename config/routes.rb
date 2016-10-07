@@ -8,19 +8,18 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
 
-  resources :users, only: [:new, :create, :index, :show] do
+  resources :users, shallow: true do
+    resources :menu_items
+    resources :reviews do
+      resources :likes
+    end
     resources :menu_items do
+      resources :payments, only: [:new, :create]
       resources :tags
     end
     resources :orders
     resources :votes
-    resources :reviews do
-      resources :likes
-    end
   end
 
-  resources :menu_items, only: [:show] do
-    resources :tags
-  end
   root "home#index"
 end

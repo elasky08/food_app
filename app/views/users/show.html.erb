@@ -1,10 +1,15 @@
+<div class="container">
 <h2><%= @user.shop_name %></h2>
 <%= @user.full_address %>
 <div>
 <% @user.menu_items.each do |m| %>
 <%= m.food_name %>
-<hr>
+<br />
+<%= m.price %>
+<%= m.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1 %>
+<%# m.submit "Buy", class: "btn btn-primary"  %>
 <% end %>
+<hr>
 </div>
 
 <div>
@@ -24,4 +29,5 @@
   <%= review.body %>
   <hr />
   <% end %>
+</div>
 </div>

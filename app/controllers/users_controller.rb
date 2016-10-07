@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :destroy, :update]
   before_action :authorize!, only: [:destroy, :update, :edit]
-
+  PROJECTS_PER_PAGE = 10
   def new
     @user = User.new
   end
@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     # @user2 = User.search(params[:search])
     @review = @user.reviews.new
+    @order = Order.new
   end
 
   def index
@@ -35,12 +36,11 @@ class UsersController < ApplicationController
     else
       @users = User.all.where.not(shop_name: nil).order(created_at: :desc).
                                                   page(params[:page]).
-                                                  per(10)
+                                                  per(PROJECTS_PER_PAGE)
     end
   end
 
   def edit
-    @user = User.find params[:id]
   end
 
   def update
@@ -69,6 +69,7 @@ class UsersController < ApplicationController
   private
 
   def authorize!
+    @user = User.find params[:id]
     redirect_to root_path, alert: "access denied!" unless @user == current_user
   end
 
