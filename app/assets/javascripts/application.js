@@ -16,4 +16,38 @@
 //= require turbolinks
 
 //= require bootstrap-sprockets
+//= require underscore
+//= require gmaps/google
 //= require_tree .
+
+
+
+// $(document).ready(function() {
+//  $(".fa-search").click(function(){
+// $(this).prepend("<input type='text' >").fadeIn();
+// });
+// })
+
+$(document).ready(function() {
+    // $("#home-slideshow").carousel({
+    //     interval: 4000,
+    //     pause: false
+    // });
+
+    $(window).keypress(function(event) {
+      if ($("#search-bar").val().length > 1) {
+        if (event.which == 13) {
+          event.preventDefault();
+          $("form#search-wrapper").submit();
+        }
+      }
+    });
+
+    $('.game-search').click(function() {
+        $('#search-wrapper').toggleClass('moved');
+    })
+
+    $('#search-bar').click(function(event){
+      event.stopPropagation();
+    });
+});

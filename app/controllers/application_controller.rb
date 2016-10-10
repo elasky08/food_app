@@ -18,4 +18,21 @@ class ApplicationController < ActionController::Base
     @current_user = User.find(session[:user_id])
   end
   helper_method :current_user
+
+  def populated_cart
+    @populated_cart ||= begin
+      if session[:cart]
+        Cart.new(session[:cart])
+      else
+        nil
+      end
+    end
+  end
+  helper_method :populated_cart
+
+  def current_cart
+    session[:cart]
+  end
+  helper_method :current_cart
+
 end

@@ -33,6 +33,9 @@ gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'mini_magick'
 gem "twitter"
 gem 'omniauth-twitter'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -44,6 +47,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem "simple_form"
 
 gem "cocoon"
 
@@ -54,6 +58,8 @@ gem "faker", github: "stympy/faker"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 group :development do

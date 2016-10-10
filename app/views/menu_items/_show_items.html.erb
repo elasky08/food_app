@@ -1,0 +1,7 @@
+<div id="<%= dom_id(items) %>">
+  <%= image_tag items.image if items.image.present? %>
+  <%= items.food_name %>
+  <%= items.description %>
+  <%= items.price %>
+  <%= link_to "delete", menu_item_path(items), method: :delete, data: {confirm: "Are you sure?"} %>
+</div>

@@ -1,0 +1,25 @@
+<%# populated_cart.food_items.each do |food_item| %>
+  <%#= food_item.item.food_name %>
+  <%#= food_item.quantity %>
+
+  <!-- <br /> -->
+<%# end %>
+
+<!-- <br /><br /> -->
+<%= form_tag action: :update, method: :post do %>
+  <ul>
+    <% current_cart.each do |id,quantity| %>
+      <% item = MenuItem.find id %>
+      <li>
+        <%= item.food_name %>
+        <span id='dd<%= item.id %>'><%= item.price %></span>
+        <%= text_field_tag 'quantity', quantity %>
+        <%= link_to fa_icon('trash'), edit_cart_path %>
+        <%= item.price * quantity %>
+        <br />
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%# link_to 'Checkout', add_to_cart_path(m.id), class: 'btn btn-primary' %>

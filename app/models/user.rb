@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
   has_many :votes, foreign_key: :voted_id
   has_many :casted_votes, foreign_key: :voter_id, class_name: "Vote"
 
@@ -8,9 +9,16 @@ class User < ApplicationRecord
   has_many :orders
   has_many :reviews
   has_many :menu_items, dependent: :nullify
+  has_many :likes, dependent: :destroy
+  has_many :liked_reviews, through: :likes, source: :review
+
+  # accepts_nested_attributes_for :menu_items, reject_if: :all_blank, allow_destroy: true
 
   has_secure_password
   VALID_EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
+  geocoded_by :full_address
+  after_validation :geocode
 
   def self.search(search)
     where(["shop_name ILIKE ? OR apartment_number ILIKE ? OR street_number ILIKE ? OR street ILIKE ? OR city ILIKE ? OR state ILIKE ? OR country ILIKE ? OR telephone ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])

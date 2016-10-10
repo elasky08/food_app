@@ -4,10 +4,11 @@ class UsersController < ApplicationController
   PROJECTS_PER_PAGE = 10
   def new
     @user = User.new
+
   end
 
   def create
-    @user = User.new params.require(:user).permit!
+    @user = User.new params.require(:user).permit([:first_name, :last_name, :email, :apartment_number, :street_number, :street, :city, :state, :telephone, :country, :shop_name, :description, :password, :password_confirmation, :avatar])
     if @user.save
       session[:user_id] = @user.id
       if @user.user_type == true
@@ -30,22 +31,37 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users2 = User.search(params[:search])
+    @users = User.search(params[:search])
     if params[:search]
       @users = User.where(id:[5..8])
     else
-      @users = User.all.where.not(shop_name: nil).order(created_at: :desc).
+      @users2 = User.all.where.not(shop_name: nil).order(created_at: :desc).
                                                   page(params[:page]).
                                                   per(PROJECTS_PER_PAGE)
+    end
+
+    if params[:lat]
+      @users = User.near([params[:lat], params[:lng]], 50, units: :km)
+    else
+      @users = User.where.not(latitude: nil, longitude: nil).order(:created_at).limit(30)
+    end
+    @markers = Gmaps4rails.build_markers(@users) do |user, marker|
+      marker.lat  user.latitude
+      marker.lng  user.longitude
+      marker.infowindow  user.first_name
     end
   end
 
   def edit
+    @user = User.find params[:id]
+    # @user.edit params.require(:user).permit([:first_name, :last_name, :email, :apartment_number, :street_number, :street, :city, :state, :telephone, :country, :shop_name, :description, :password, :password_confirmation, :avatar, {menu_items_attributes: [:food_name, :price, :destroy, :id]}])
+
+    @menu_items = MenuItem.new
   end
 
   def update
     @user = User.find params[:id]
-    if @user.update params.require(:user).permit!
+    if @user.update params.require(:user).permit([:first_name, :last_name, :email, :apartment_number, :street_number, :street, :city, :state, :telephone, :country, :shop_name, :description, :password, :password_confirmation, :avatar, {menu_items_attributes: [:food_name, :price, :destroy, :id]}])
       redirect_to user_path(@user)
     else
       render :edit

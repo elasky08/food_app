@@ -5,14 +5,21 @@ class MenuItemsController < ApplicationController
   end
 
   def create
-    @menu_item = MenuItem.new params.require(:food_name,
+    @menu_item = MenuItem.new params.require(:menu_item).permit(:food_name,
                                              :price,
-                                             {rewards_attribute: [:food_name, :price, :id]})
-    @menu_item.user = current_user
-    if @menu_item.save
-      redirect_to user_path(@menu_item.user), notice: "Food added successfully!"
-    else
-      render :new
+                                             :image, :description, :user_id)
+    @user = User.find params[:user_id]
+    @menu_item.user = @user
+    respond_to do |format|
+      if @menu_item.save
+        flash[:notice] = "successfully added"
+        format.html {redirect_to edit_user_path(@user) }
+        format.js {render :create_success}
+      else
+        flash[:notice] = "Fix the errors!"
+        format.html {render "/users/edit"}
+        format.js {render :create_failure}
+      end
     end
   end
 
@@ -28,6 +35,6 @@ class MenuItemsController < ApplicationController
   def destroy
     @menu_item = MenuItem.find params[:id]
     @menu_item.destroy
-    redirect_to user_path(current_user), alert: "access denied" unless @menu_item.user == current_user
+    redirect_to edit_user_path(current_user), alert: "access denied" unless @menu_item.user == current_user
   end
 end

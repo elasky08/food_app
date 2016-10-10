@@ -1,1 +1,10 @@
 <h1>Welcome to Food App</h1>
+<% @user.each do |user| %>
+<ul>
+<%= link_to user_path(user) do %>
+<li>
+  <h4><%= user.first_name %></h4>
+</li>
+<% end %>
+<% end %>
+</ul>
