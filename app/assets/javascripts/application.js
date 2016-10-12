@@ -13,13 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require chosen-jquery
-//= require turbolinks
 
 //= require bootstrap-sprockets
 //= require underscore
 //= require gmaps/google
 //= require_tree .
-
 
 
 // $(document).ready(function() {
@@ -43,7 +41,7 @@ $(document).ready(function() {
       }
     });
 
-    $('.game-search').click(function() {
+    $('.food-search').click(function() {
         $('#search-wrapper').toggleClass('moved');
     })
 

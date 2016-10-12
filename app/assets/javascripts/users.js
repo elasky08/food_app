@@ -18,6 +18,9 @@ $(document).ready(function() {
   $('#profile a:first').tab('show') // Select first tab
   $('#add_menu_item a:last').tab('show') // Select last tab
 
+  $("#btn-map").click(function(event){
+    $("#map").toggle(1000);
+  });
 
 });
 

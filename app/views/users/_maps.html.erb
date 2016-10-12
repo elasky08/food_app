@@ -1,16 +1,9 @@
 <button type="button" id="btn-map" name="button">show map</button>
 
-<div style="width: 800px;">
-  <div id="map" style="width: 800px; height: 400px;"></div>
+<div style="width: 100%;">
+  <div id="map" class="map-size" ></div>
 </div>
 
-<script type="text/javascript">
-$(document).ready(function(){
-    $("#btn-map").click(function(){
-        $("#map").toggle(1000);
-    });
-});
-</script>
 <script>
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
@@ -27,24 +20,3 @@ $(document).ready(function(){
     });
   <% end %>
 </script>
-
-<!-- <script>
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers([
-    {
-      "lat": <%= @users2.latitude %>,
-      "lng": <%= @users2.longitude %>,
-      // "picture": {
-      //   "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
-      //   "width":  32,
-      //   "height": 32
-      // },
-      "infowindow": "<%= @users2.shop_name %>"
-    }
-  ]);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  handler.getMap().setZoom(17);
-});
-</script> -->

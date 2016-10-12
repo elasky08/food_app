@@ -41,11 +41,11 @@ class UsersController < ApplicationController
     end
 
     if params[:lat]
-      @users = User.near([params[:lat], params[:lng]], 50, units: :km)
+      @users2 = User.near([params[:lat], params[:lng]], 50, units: :km)
     else
-      @users = User.where.not(latitude: nil, longitude: nil).order(:created_at).limit(30)
+      @users2 = User.where.not(latitude: nil, longitude: nil).order(:created_at).limit(30)
     end
-    @markers = Gmaps4rails.build_markers(@users) do |user, marker|
+    @markers = Gmaps4rails.build_markers(@users2) do |user, marker|
       marker.lat  user.latitude
       marker.lng  user.longitude
       marker.infowindow  user.first_name

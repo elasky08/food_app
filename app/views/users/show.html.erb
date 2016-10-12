@@ -1,51 +1,56 @@
+<div class="shop-image" style="margin-top: 5em;">
+</div>
+<div class="shop-info">
+  <div class="container">
+    <% if @user.avatar.present? %>
+      <%= image_tag @user.avatar.url(:thumb), class: "img-thumbnail"  %>
+    <% else %>
+      <%= image_tag 'default', class: 'img-thumbnail'%>
+    <% end %>
+    <h3 style="display: inline-block;"><%= @user.shop_name %></h3>
+    <%= @user.full_address %>
+  </div>
+</div>
+
 <div class="container">
-<h2><%= @user.shop_name %></h2>
-<% if @user.avatar.present? %>
-<%= image_tag @user.avatar.url(:thumb), class: "img-thumbnail"  %>
-<% else %>
-<div class="img-thumbnail">
-  <%= display_avatar @user%>
-</div>
-<% end %>
-<%= @user.full_address %>
-<div>
-<% @user.menu_items.each do |m| %>
-<%= m.food_name %>
-<br />
-<%= m.price %>
-<%# m.text_area %>
-<%= link_to 'Add to cart', add_cart_path({id: m.id}), method: :patch, class: 'btn btn-primary' %>
-<% end %>
-<hr>
-</div>
+  <div class="row menu">
+    <h3 align="center">Menu</h3>
+    <% @user.menu_items.each do |m| %>
+    <div class="col-sm-6">
+      <%= m.food_name %>
+      <%= m.price %>
+      <%= link_to 'Add to cart', add_cart_path({id: m.id}), method: :patch, class: 'btn btn-primary btn-sm' %>
+    </div>
+      <% end %>
+  </div>
 
-<div>
-  <h3>Create Review</h3>
-  <%= @review.errors.full_messages.join(", ") unless @review.nil? %>
-  <%= form_for [@user, @review] do |f| %>
   <div>
-    <%= f.text_area :body, class: "form-control" %>
+    <h3>Create Review</h3>
+    <%= @review.errors.full_messages.join(", ") unless @review.nil? %>
+    <%= form_for [@user, @review] do |f| %>
+      <div>
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+      <div>
+        <%= f.submit "Submit", class: "btn btn-primary btn-xs" %>
+      </div>
+    <% end %>
   </div>
   <div>
-    <%= f.submit "Submit", class: "btn btn-primary btn-xs" %>
+    <% @user.reviews.each do |review| %>
+      <%= review.body %>
+      <% if can? :like, review %>
+        <% user_like = review.like_for current_user %>
+
+        <% if user_like.present? %>
+          <%= link_to "Un-Like", review_like_path(@user, review), method: :delete %>
+        <% else %>
+          <%= link_to "Like", user_review_likes_path(@user, :review, review ), method: :post %>
+          <% end %>
+        Like (<%= pluralize @review.likes.count, "like" %>)
+
+        <hr />
+      <% end %>
+    <% end %>
   </div>
-  <% end %>
-</div>
-<div>
-  <% @user.reviews.each do |review| %>
-  <%= review.body %>
-  <% if can? :like, review %>
-<% user_like = review.like_for current_user %>
-
-<% if user_like.present? %>
-<%= link_to "Un-Like", review_like_path(@user, review), method: :delete %>
-<% else %>
-<%= link_to "Like", user_review_likes_path(@user, :review, review ), method: :post %>
-<% end %>
-Like (<%= pluralize @review.likes.count, "like" %>)
-
-  <hr />
-  <% end %>
-  <% end %>
-</div>
 </div>

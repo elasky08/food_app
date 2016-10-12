@@ -32,24 +32,26 @@ body {
   width: 100%;
   top: 0px;
   left: 0px;
-  z-index: -10;
+  /*z-index: -100;*/
   transition: top 0.3s;
 }
 
 #search-bar {
-   background-color: #4169ac;
+   position: fixed;
+   background-color: #3BAEA0;
    border: none;
    border-radius: 0px;
-   opacity: 0.95;
-   font-color: white;
+   opacity: 0.89;
+   color: white;
    height: 50px;
-   z-index: -1;
+   font-size: 18px;
 }
-
 
 #search-bar::-webkit-input-placeholder {
   color: white;
   opacity: 0.5;
+  z-index: -1;
+  font-size: 18px;
 }
 
 #search-wrapper input[type='text']:focus {
@@ -61,6 +63,7 @@ body {
 }
 
  .navbar-default {
+   position: fixed;
    background-color: #ff5722;
    border: 0;
    font-family: 'Roboto Condensed', sans-serif;
@@ -72,7 +75,7 @@ body {
  }
 
  .navbar-default a:hover {
-   color: #fff;
+   /*color: #fff;*/
    background-color: #000;
  }
 
@@ -99,6 +102,7 @@ body {
  }
 
  .navbar {
+   position: fixed;
    margin-bottom: 0;
  }
 
@@ -138,8 +142,7 @@ body {
 
 
  h1 {
-   font-family: 'Open Sans', sans-serif;
-   color: #ff5722;
+   font-family: 'Roboto', sans-serif;
    font-weight: 300;
  }
 

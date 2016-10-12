@@ -2,25 +2,42 @@
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script>
 
-<h1>All bakers</h1>
-<div class="navbar-form">
-<%= form_tag users_path, :method => 'get' do %>
-  <%= text_field_tag :search, params[:search], class: 'form-control' %>
-  <%= submit_tag "Search", class: 'btn btn-default'%>
-<!-- <%# submit_tag "Search", :name => nil %> why is there :name => nil ? I don't know-->
-<% end %>
-</div>
-<div>
-  <% @users.each do |u| %>
-  <h2><%= link_to u.shop_name, user_path(u) %></h2>
-  <p><%= u.shop_name %></p>
-  <p><%= u.full_address %></p>
-  <p><%= u.first_name %></p>
-  <p><%= u.last_name %></p>
+<div class="container user-margin-div">
+  <h1>All bakers</h1>
+<div class="user-container">
+  <%= render "maps"%>
+  <ul>
+    <% @users2.each do |u| %>
+    <li>
+      <h2><%= link_to u.shop_name, user_path(u) %></h2>
+      <p></p>
+      <p><%= u.description %></p>
+      <p>Address: <%= u.full_address %></p>
+      <p><%= u.first_name %></p>
 
-  <button id="add-maps" type="submit">show map</button>
-  <hr>
-  <% end %>
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+        view menu
+      </button>
+    </li>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        hello ela
+      </div>
+    </div>
+  </div>
 </div>
-<%= render "maps", u: u %>
-<%= paginate @users %>
+  <% end %>
+</ul>
+</div>
+</div>
+<%#= paginate @users %>
+</div>
