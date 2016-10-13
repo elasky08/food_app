@@ -1,4 +1,4 @@
-<%= form_for [@user, @menu_items], remote: true do |menu| %>
+<%= form_for [@user, @menu_items], remote: true, authenticity_token: true do |menu| %>
 <div class="form-group">
   <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
   <div class="form-group">

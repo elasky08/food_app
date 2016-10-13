@@ -37,6 +37,10 @@
   position: relative;
 }
 
+.user-container li {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
 .map-size {
   width: 100%;
   height: 300px;
@@ -57,14 +61,138 @@
 .img-thumbnail {
   border-radius: 100px;
   width: 50px;
-  display: inline-block;
+  margin-right: 12px;
+  // display: inline-block;
 }
+
+.food-info-container {
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
+}
+
+.food-info {
+  margin-left: 150px;
+  margin-right: 20px;
+}
+
+.food-image {
+  width: 140px;
+  border-radius: 2px;
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  display: inline-block;
+  float: left;
+}
+
+.inline-btn {
+  float: right;
+}
+
+
 
 .menu {
   background-color: #FAF9F0;
   width: 100%;
   width: 100%;
   padding: 18px;
+  padding-bottom: 30px;
   margin: 3em 0em;
   border-radius: 5px;
+}
+
+#login {
+  background-image: url('signup1.jpg');
+  background-size: cover;
+  margin: auto;
+}
+
+#login-container {
+  padding: 30px;
+  background-color: #FAF9F0;
+  margin: 200px auto;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  width: 300px;
+}
+
+.login-input-field {
+  width: 100%;
+}
+
+.login-input-form {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  height: 44px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding: 0px 8px;
+  box-sizing: border-box;
+}
+
+.login-submit {
+  height: 44px;
+  display: block;
+  margin-bottom: 10px;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  border: 0px;
+  background-color: #3BAEA0;
+  font-size: 14px;
+  color: white;
+}
+
+a:hover.login-submit {
+  color: #fff !important;
+  text-decoration: none !important;
+  background-color: #118A7E !important;
+}
+
+#btn-map {
+  border: 0;
+  background-color: #fff;
+  padding: 0px;
+  margin-bottom: 20px;
+}
+
+.add-margin-bottom {
+  margin-bottom: 5em;
+}
+
+.add-margin-top {
+  margin-top: 2em;
+}
+
+.buy-btn {
+  padding: 10px;
+  background-color: #3BAEA0;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+  border: 0;
+}
+
+.review-btn {
+  display: inline;
+  height: 44px;
+  vertical-align: top;
+}
+
+
+a:hover.buy-btn {
+  color: #fff !important;
+  text-decoration: none !important;
+  background-color: #118A7E !important;
+}
+
+.review {
+  margin: 3em 0em;
+}
+
+.review-field {
+  width: 92%;
+  display: inline;
 }

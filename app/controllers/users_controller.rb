@@ -31,21 +31,21 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.search(params[:search])
-    if params[:search]
-      @users = User.where(id:[5..8])
+    @q = User.ransack(params[:q])
+    if params[:q]
+      @users2 = @q.result
     else
-      @users2 = User.all.where.not(shop_name: nil).order(created_at: :desc).
+      @users2 = User.where.not(shop_name: nil).order(created_at: :desc).
                                                   page(params[:page]).
                                                   per(PROJECTS_PER_PAGE)
     end
 
-    if params[:lat]
-      @users2 = User.near([params[:lat], params[:lng]], 50, units: :km)
-    else
-      @users2 = User.where.not(latitude: nil, longitude: nil).order(:created_at).limit(30)
-    end
-    @markers = Gmaps4rails.build_markers(@users2) do |user, marker|
+    # if params[:lat]
+    #   @users2 = User.near([params[:lat], params[:lng]], 50, units: :km)
+    # else
+    #   @users2 = User.where.not(latitude: nil, longitude: nil).order(:created_at).limit(30)
+    # end
+    @markers = Gmaps4rails.build_markers(@users2.with_lat_and_lng) do |user, marker|
       marker.lat  user.latitude
       marker.lng  user.longitude
       marker.infowindow  user.first_name

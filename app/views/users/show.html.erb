@@ -9,17 +9,24 @@
     <% end %>
     <h3 style="display: inline-block;"><%= @user.shop_name %></h3>
     <%= @user.full_address %>
+    <%= @user.telephone %>
   </div>
 </div>
 
-<div class="container">
+<div class="container add-margin-bottom">
   <div class="row menu">
     <h3 align="center">Menu</h3>
     <% @user.menu_items.each do |m| %>
     <div class="col-sm-6">
-      <%= m.food_name %>
-      <%= m.price %>
-      <%= link_to 'Add to cart', add_cart_path({id: m.id}), method: :patch, class: 'btn btn-primary btn-sm' %>
+      <div class="food-info-container">
+        <%= image_tag m.image, class: 'food-image' %>
+        <div class="food-info">
+          <h4 style="display: inline;"><%= m.food_name %></h4>
+          <%= link_to 'Add to cart', add_cart_path({id: m.id}), method: :patch, class: 'buy-btn inline-btn' %>
+          <p style="margin-top:10px;">$<%= m.price %><p>
+          <p style="font-style: italic"><%#= m.description %>jhsadkjash asdjakj sds fsdfwef  sefsd frf df sdfs fefsefd  dfsdf sdfsd dsfds fdsfe essd fsdfsd sdfsdfsdf efwewe ewdc sdfwef sdsda asdsad asdsd daw wew we wewe.</p>
+        </div>
+      </div>
     </div>
       <% end %>
   </div>
@@ -29,25 +36,23 @@
     <%= @review.errors.full_messages.join(", ") unless @review.nil? %>
     <%= form_for [@user, @review] do |f| %>
       <div>
-        <%= f.text_area :body, class: "form-control" %>
-      </div>
-      <div>
-        <%= f.submit "Submit", class: "btn btn-primary btn-xs" %>
+        <%= f.text_field :body, placeholder: "Write a review", class: "login-input-form review-field" %>
+        <%= f.submit "Post review", class: 'buy-btn review-btn'%>
       </div>
     <% end %>
   </div>
-  <div>
+  <div class="review">
     <% @user.reviews.each do |review| %>
+      <%= image_tag current_user.avatar, class: "img-thumbnail" %>
       <%= review.body %>
       <% if can? :like, review %>
         <% user_like = review.like_for current_user %>
 
         <% if user_like.present? %>
           <%= link_to "Un-Like", review_like_path(@user, review), method: :delete %>
-        <% else %>
-          <%= link_to "Like", user_review_likes_path(@user, :review, review ), method: :post %>
+        <%# else %>
+          <%#= link_to "Like", user_review_likes_path(@user, :review, review ), method: :post %>
           <% end %>
-        Like (<%= pluralize @review.likes.count, "like" %>)
 
         <hr />
       <% end %>

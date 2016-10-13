@@ -1,4 +1,5 @@
 class MenuItem < ApplicationRecord
+  mount_uploader :image, AvatarUploader
   belongs_to :user
 
   has_many :order_items

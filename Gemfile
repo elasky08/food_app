@@ -36,6 +36,7 @@ gem 'omniauth-twitter'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'ransack'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

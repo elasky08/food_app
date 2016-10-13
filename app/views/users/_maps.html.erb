@@ -1,4 +1,4 @@
-<button type="button" id="btn-map" name="button">show map</button>
+<button type="button" id="btn-map" name="button"><span class="fa fa-map fa-lg"></span></button>
 
 <div style="width: 100%;">
   <div id="map" class="map-size" ></div>
@@ -6,17 +6,12 @@
 
 <script>
   handler = Gmaps.build('Google');
+
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     markers = handler.addMarkers(<%= raw @markers.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
   });
 
-  <% unless params[:lat] %>
-    navigator.geolocation.getCurrentPosition(function(position) {
-        var latitude  = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        window.location = "<%= users_path %>?lat=" + latitude + "&lng=" + longitude;
-    });
-  <% end %>
+
 </script>
