@@ -7,9 +7,22 @@
     <% else %>
       <%= image_tag 'default', class: 'img-thumbnail'%>
     <% end %>
-    <h3 style="display: inline-block;"><%= @user.shop_name %></h3>
-    <%= @user.full_address %>
-    <%= @user.telephone %>
+    <h3 style="display: inline-block; margin-top: 23px;"><%= @user.shop_name %></h3>
+    <div class="inline">
+      <span class="fa fa-map-marker icon-space"></span><%= @user.full_address %>
+    </div>
+    <div class="inline">
+      <span class="fa fa-mobile fa-lg icon-space"></span><%= @user.telephone %>
+    </div>
+    <div class="inline">
+      <span class="fa fa-envelope icon-space"></span><%= @user.email %>
+    </div>
+    <div class="inline">
+      <span class="fa fa-star icon-space"></span>3/5
+    </div>
+    <div class="inline">
+      <span class="fa fa-truck icon-space"></span>Deliver/Pick Up
+    </div>
   </div>
 </div>
 
@@ -24,7 +37,7 @@
           <h4 style="display: inline;"><%= m.food_name %></h4>
           <%= link_to 'Add to cart', add_cart_path({id: m.id}), method: :patch, class: 'buy-btn inline-btn' %>
           <p style="margin-top:10px;">$<%= m.price %><p>
-          <p style="font-style: italic"><%#= m.description %>jhsadkjash asdjakj sds fsdfwef  sefsd frf df sdfs fefsefd  dfsdf sdfsd dsfds fdsfe essd fsdfsd sdfsdfsdf efwewe ewdc sdfwef sdsda asdsad asdsd daw wew we wewe.</p>
+          <p style="font-style: italic"><%= m.description %></p>
         </div>
       </div>
     </div>
@@ -42,20 +55,22 @@
     <% end %>
   </div>
   <div class="review">
-    <% @user.reviews.each do |review| %>
+    <div>
       <%= image_tag current_user.avatar, class: "img-thumbnail" %>
+      <% @user.reviews.each do |review| %>
       <%= review.body %>
       <% if can? :like, review %>
-        <% user_like = review.like_for current_user %>
+      <% user_like = review.like_for current_user %>
 
-        <% if user_like.present? %>
-          <%= link_to "Un-Like", review_like_path(@user, review), method: :delete %>
-        <%# else %>
-          <%#= link_to "Like", user_review_likes_path(@user, :review, review ), method: :post %>
-          <% end %>
-
-        <hr />
+      <% if user_like.present? %>
+      <%= link_to "Un-Like", review_like_path(@user, review), method: :delete %>
+      <% else %>
+      <%= link_to "Like", user_review_likes_path(@user, :review, review ), method: :post %>
       <% end %>
-    <% end %>
+      <hr />
+      <% end %>
+      <% end %>
+
+    </div>
   </div>
 </div>

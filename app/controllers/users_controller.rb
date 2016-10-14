@@ -25,7 +25,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    # @user2 = User.search(params[:search])
     @review = @user.reviews.new
     @order = Order.new
   end
@@ -40,11 +39,6 @@ class UsersController < ApplicationController
                                                   per(PROJECTS_PER_PAGE)
     end
 
-    # if params[:lat]
-    #   @users2 = User.near([params[:lat], params[:lng]], 50, units: :km)
-    # else
-    #   @users2 = User.where.not(latitude: nil, longitude: nil).order(:created_at).limit(30)
-    # end
     @markers = Gmaps4rails.build_markers(@users2.with_lat_and_lng) do |user, marker|
       marker.lat  user.latitude
       marker.lng  user.longitude
@@ -54,8 +48,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
-    # @user.edit params.require(:user).permit([:first_name, :last_name, :email, :apartment_number, :street_number, :street, :city, :state, :telephone, :country, :shop_name, :description, :password, :password_confirmation, :avatar, {menu_items_attributes: [:food_name, :price, :destroy, :id]}])
-
     @menu_items = MenuItem.new
   end
 

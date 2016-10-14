@@ -3,22 +3,42 @@
 <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script>
 
 <div class="container user-margin-div">
-  <h1>All bakers</h1>
+  <h1 align="center">Check out all the food items made by these talented home cooks </h1>
 <div class="user-container">
   <%= render "maps"%>
   <ul>
     <% @users2.each do |u| %>
+    <div style="width: 100%;">
+
     <li>
       <h2><%= link_to u.shop_name, user_path(u) %></h2>
-      <p></p>
-      <p><%= u.description %></p>
-      <p>Address: <%= u.full_address %></p>
-      <p><%= u.first_name %></p>
+      <%= image_tag u.avatar, class: "user-index-picture" %>
+      <div class="user-index-info">
+        <p><%= u.description %></p>
+        <div style="margin-top:20px;" class="inline-user-index">
+          <span class="fa fa-map-marker icon-space"></span><%= u.full_address %>
+        </div>
+        <div class="inline-user-index">
+          <span class="fa fa-mobile fa-lg icon-space"></span><%= u.telephone %>
+        </div>
+        <div class="inline-user-index">
+          <span class="fa fa-envelope icon-space"></span><%= u.email %>
+        </div>
+        <div class="inline-user-index">
+          <span class="fa fa-star icon-space"></span>3/5
+        </div>
+        <div class="inline-user-index">
+          <span class="fa fa-truck icon-space"></span>Deliver/Pick Up
+        </div>
+        <div style="margin-top: 20px;">
+          <button type="button" class="buy-btn" data-toggle="modal" data-target="#myModal">
+          view menu
+          </button>
+        </div>
+      </div>
 
-      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-        view menu
-      </button>
     </li>
+    </div>
 
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -30,7 +50,12 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        hello ela
+        <% u.menu_items.each do |food| %>
+        <%= image_tag food.image, class:"modal-images" %>
+        <h4><%= food.food_name %></h4>
+        <p>$<%= food.price %></p>
+        <p style="margin-bottom:30px;"><%= food.description %></p>
+        <% end %>
       </div>
     </div>
   </div>

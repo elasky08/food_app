@@ -47,7 +47,10 @@
 }
 
 .shop-image {
+  background-image: url('sushi-splash3.jpg');
   background-color: #7E2553;
+  background-size: cover;
+  background-repeat: no-repeat;
   width: 100%;
   height: 300px;
 }
@@ -62,7 +65,7 @@
   border-radius: 100px;
   width: 50px;
   margin-right: 12px;
-  // display: inline-block;
+  display: inline-block;
 }
 
 .food-info-container {
@@ -90,11 +93,8 @@
   float: right;
 }
 
-
-
 .menu {
   background-color: #FAF9F0;
-  width: 100%;
   width: 100%;
   padding: 18px;
   padding-bottom: 30px;
@@ -195,4 +195,27 @@ a:hover.buy-btn {
 .review-field {
   width: 92%;
   display: inline;
+}
+
+.inline {
+  display: inline;
+  margin: 0px 25px;
+  font-size: 14px;
+}
+
+.inline-user-index {
+  display: inline;
+  margin-right: 25px;
+  font-size: 14px;
+}
+
+.icon-space {
+  margin-right: 8px;
+}
+
+.modal-images {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #DDD;
+  border-radius: 3px;
 }
