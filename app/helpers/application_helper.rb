@@ -3,7 +3,7 @@ module ApplicationHelper
     unless user.avatar.nil?
       image_tag(user.avatar.url)
     else
-      image_tag("..assets/default.png")
+      image_tag("default.png")
     end
   end
 end
