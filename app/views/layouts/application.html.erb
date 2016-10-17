@@ -26,7 +26,7 @@
           <li><%= link_to "Contact", new_contact_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to fa_icon('shopping-cart lg'), edit_cart_path %></li>
+          <li><%= link_to fa_icon('shopping-cart lg'), root_path %></li>
           <li class="dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="user_drop_down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if user_signed_in? %>
@@ -65,23 +65,7 @@
       <button type="submit" class="btn btn-default" style="display: none">Submit</button>
   </form>
 
-    <!-- <ul class=" nav navbar-nav navbar-right">
-    <li><%# link_to "Home", root_path %></li>
-    <li><%# link_to "About", about_path %></li>
-    <li><%# link_to "Shops", users_path %></li>
-    <li><%# link_to "Contact", new_contact_path %></li>
-    <li><%# link_to "Add Menu Item", new_menu_item_path %></li>
-      <% if user_signed_in? %>
-      <li><a>Welcome <%# current_user.first_name %></a></li>
-      <li><%# link_to "sign out", sessions_path, method: :delete %></li>
-      <% else %>
-      <li><%# link_to "Sign Up", new_user_path %></li>
-      <li><%# link_to "Sign In", new_session_path %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-</nav> -->
+
 <div class="flash-message">
   <%= flash[:notice] || flash[:alert] %>
 </div>
@@ -95,7 +79,6 @@
               <p>© 2016 neighborFood</p>
               <!-- <ul class="nav navbar-nav navbar-right">
                 <li style="color: #fff; margin: 25px 15px;">© 2016 Awesome Answers</li>
-
               </ul>-->
             </div>
 

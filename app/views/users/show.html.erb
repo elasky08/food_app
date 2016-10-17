@@ -35,7 +35,8 @@
         <%= image_tag m.image, class: 'food-image' %>
         <div class="food-info">
           <h4 style="display: inline;"><%= m.food_name %></h4>
-          <%= link_to 'Add to cart', add_cart_path({id: m.id}), method: :patch, class: 'buy-btn inline-btn' %>
+          <%#= link_to 'Add to cart', add_cart_path({id: m.id}), method: :patch, class: 'buy-btn inline-btn' %>
+          <%= link_to 'Add to cart', user_path(@user), class: 'buy-btn inline-btn' %>
           <p style="margin-top:10px;">$<%= m.price %><p>
           <p style="font-style: italic"><%= m.description %></p>
         </div>
@@ -56,7 +57,7 @@
   </div>
   <div class="review">
     <div>
-      <%= image_tag current_user.avatar, class: "img-thumbnail" %>
+      <%= image_tag @user.avatar, class: "img-thumbnail" %>
       <% @user.reviews.each do |review| %>
       <%= review.body %>
       <% if can? :like, review %>
