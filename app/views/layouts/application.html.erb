@@ -26,7 +26,9 @@
           <li><%= link_to "Contact", new_contact_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to fa_icon('shopping-cart lg'), root_path %></li>
+          <!-- <li><%#= link_to fa_icon('shopping-cart lg'), root_path %></li> -->
+          <li><a href=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+
           <li class="dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="user_drop_down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if user_signed_in? %>
@@ -49,7 +51,7 @@
             </ul>
           </li>
           <li class="food-search">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-search" aria-hidden="true" id="search"></span>
+              <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search" aria-hidden="true" id="search"></i>
               </a>
 
           </li>
