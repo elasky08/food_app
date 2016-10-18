@@ -32,7 +32,7 @@
     <% @user.menu_items.each do |m| %>
     <div class="col-sm-6">
       <div class="food-info-container">
-        <%= image_tag m.image, class: 'food-image' %>
+        <%= image_tag m.image.url(:thumb), class: 'food-image' %>
         <div class="food-info">
           <h4 style="display: inline;"><%= m.food_name %></h4>
           <%#= link_to 'Add to cart', add_cart_path({id: m.id}), method: :patch, class: 'buy-btn inline-btn' %>
