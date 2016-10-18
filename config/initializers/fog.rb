@@ -15,7 +15,7 @@ CarrierWave.configure do |config|
     provider:              'AWS',                        # required
     aws_access_key_id:     ENV['AWS_ACCESS_KEY_Id'],                        # required
     aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],                        # required
-    region:                'us-west-2',                  # optional, defaults to 'us-east-1'
+    region:                'us-west-2',                  # optional
   }
   config.fog_directory  = 'test-food-app'                          # required
   config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" } # optional, defaults to {}
