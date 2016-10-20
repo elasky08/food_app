@@ -85,20 +85,16 @@ body {
  }
 
  .navbar-brand {
-   margin-top: 5px;
+   /*margin-top: 5px;*/
    vertical-align: middle;
  }
 
- /*.footer.navbar-brand {
-   margin-top: 0px;
-   vertical-align: middle;
- }*/
+ a < .navbar-brand {
+   padding: 0px 15px;
+ }
 
- a {
-   &.navbar-brand {
-     padding: 0px 15px;
-     line-height: 25px;
-   }
+ nav < .container < .navbar-header < a {
+   margin: 15px 0px;
  }
 
  .navbar {
