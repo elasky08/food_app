@@ -2,9 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.user-margin-div{
+.user-margin-div {
   margin-top: 8em;
   margin-bottom: 8em;
+}
+
+.center-align {
+  margin: auto;
+  border: 1px solid #000;
+  width: 100%;
+}
+
+.form-margins1 {
+  margin: 10px 10px;
+  width: 70%;
+}
+
+.form-margins2 {
+  display: inline;
+  margin: 10px 10px;
+  width: 387px;
+}
+
+.form-margins3 {
+  margin: 10px 10px;
+  width: 250px;
 }
 
 .user-container {
@@ -21,15 +43,8 @@
 }
 
 .user-container li a {
-  color: #333;
+  color: #444;
 }
-
-// .user-container li:hover {
-//   background-color: #EDEBCA;
-//   // box-shadow: 0px 2px 2px 0px rgba(34,34,34,0.70);
-//   // transition: 0.2s ease-in-out 0.2s;
-//
-// }
 
 .user-container ul {
   list-style: none;
@@ -144,10 +159,15 @@
   color: white;
 }
 
-a:hover.login-submit {
-  color: #fff !important;
-  text-decoration: none !important;
-  background-color: #118A7E !important;
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #118A7E;
+    text-decoration: none;
+}
+
+.user-container li a:hover {
+  text-decoration: none;
+  color: #000;
 }
 
 #btn-map {
@@ -181,13 +201,6 @@ a:hover.login-submit {
   vertical-align: top;
 }
 
-
-a:hover.buy-btn {
-  color: #fff !important;
-  text-decoration: none !important;
-  background-color: #118A7E !important;
-}
-
 .review {
   margin: 3em 0em;
 }
@@ -218,4 +231,14 @@ a:hover.buy-btn {
   padding: 4px;
   border: 1px solid #DDD;
   border-radius: 3px;
+}
+
+.ela-tabs {
+  text-decoration: none;
+}
+
+.ela-tabs.nav > li > a {
+  border-radius: 0px;
+  margin: 0px;
+  color: #444444;
 }
