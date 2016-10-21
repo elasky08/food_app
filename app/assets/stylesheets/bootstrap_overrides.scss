@@ -1,2 +1,6 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+.table > tbody > tr > td {
+  border-top: 0px;
+}
