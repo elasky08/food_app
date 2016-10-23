@@ -1,26 +1,44 @@
-<form class="form-inline">
-  <%= form_for [@user, @menu_items], remote: true, authenticity_token: true do |menu| %>
-<div>
-  <div class="form-group form-margins2">
-    <%= menu.text_field :food_name, placeholder: "Food name", class: "login-input-field login-input-form"%>
-  </div>
-  <div class="form-group form-margins2">
-    <%= menu.text_field :price, placeholder: "Price", class: "login-input-field login-input-form" %>
-      <!-- <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount"> -->
-  </div>
-</form>
+<%= form_for [@user, @menu_items], remote: true, authenticity_token: true do |menu| %>
+
+<table class="table table-responsive" style="border: 0px;">
+  <tr>
+    <td colspan="6" style="padding: 10px;">
+      <div>
+        <%= menu.text_field :food_name, placeholder: "Food name", class: "login-input-field login-input-form"%>
+      </div>
+    </td>
+    <td colspan="6" style="padding: 10px;">
+      <div>
+        <%= menu.text_field :price, placeholder: "Price", class: "login-input-field login-input-form" %>
+        <!-- <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount"> -->
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="12" style="padding: 10px;">
+      <div>
+        <%= menu.text_area :description, placeholder: "Food description", class: "login-input-field login-input-form" %>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="6" style="padding: 10px;">
+      <div>
+        <%= menu.file_field :image %>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="6" style="padding: 10px;">
+      <div style="margin-top: 25px;">
+        <%= menu.submit class: "btn-primary buy-btn" %>
+      </div>
+    </td>
+  </tr>
+</table>
 
 
-<form class="form-inline">
-  <div class="form-group form-margins1">
-    <%= menu.text_area :description, placeholder: "Food description", class: "login-input-field login-input-form" %>
-  </div>
-</form>
-  <div class="form-group form-margins1">
-    <%= menu.file_field :image %>
-  </div>
-  <div style="margin-top: 25px; margin-left: 10px;">
-    <%= menu.submit class: "btn-primary buy-btn" %>
-  </div>
-  <% end %>
-</div>
+<% end %>
