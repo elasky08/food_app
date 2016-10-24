@@ -1,152 +1,156 @@
 <div class="container user-margin-div">
-<ul class="ela-tabs nav nav-tabs" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#add_menu_item" role="tab">Add Menu Item</a>
-  </li>
-</ul>
+  <ul class="ela-tabs nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#add_menu_item" role="tab">Add Menu Item</a>
+    </li>
+  </ul>
 <!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane fade in active" id="profile" role="tabpanel">
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="profile" role="tabpanel">
 
-    <%= @user.errors.full_messages.join(", ") %>
-    <%= form_for @user do |f| %>
-    <table class="table table-responsive" style="border:0px;">
-      <thead>
-        <tr>
-          <td>
-            <h4 style="margin-top: 30px;">Personal Information</h4>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="6" style="padding: 10px;">
-            <div>
-              <%= f.text_field :first_name, placeholder: "First name", class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-          <td colspan="6" style="padding: 10px;">
-            <div>
-              <%= f.text_field :last_name, placeholder: "Last name", class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="6" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.email_field :email, placeholder: "Email", class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-          <td colspan="6" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.password_field :password, placeholder: "Password",class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="12" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.text_field :telephone, placeholder: "Telephone", class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="12" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.label :avatar %>
-              <%= f.file_field :avatar %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h4 style="margin-top: 30px;">Address</h4>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="4" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.text_field :apartment_number, placeholder: "Apartment number", class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-          <td colspan="4" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.text_field :street_number, placeholder: "Street number",class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-          <td colspan="4" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.text_field :street, placeholder: "Street", class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="4" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.text_field :city, placeholder: "City", class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-          <td colspan="4" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.text_field :state, placeholder: "State", class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-          <td colspan="4" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.text_field :country, placeholder: "Country", class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h4 style="margin-top: 30px;">Shop Information</h4>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="12" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.text_field :shop_name, placeholder: "Shop name", class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="12" style="border-top: 0px; padding: 10px;">
-            <div>
-              <%= f.text_field :description, placeholder: "Description", class: "login-input-field login-input-form" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div colspan="12" style="border-top: 0px; padding: 2px;">
-              <%= f.submit "Edit account", class: "btn-primary buy-btn" %>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <% end %>
-  </div>
-
-  <div class="tab-pane fade in" id="add_menu_item" role="tabpanel">
-    <h4 style="margin-top: 30px; margin-bottom: 20px;">Add Menu Item</h4>
-    <div class="row reports-in">
-        <div class="continer">
-          <%= render "add_menu_items"%>
-        </div>
+      <%= @user.errors.full_messages.join(", ") %>
+      <%= form_for @user do |f| %>
+      <table class="table table-responsive" style="border:0px;">
+        <thead>
+          <tr>
+            <td>
+              <h4 style="margin-top: 30px;">Personal Information</h4>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="6" style="padding: 10px;">
+              <div>
+                <%= f.text_field :first_name, placeholder: "First name", class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+            <td colspan="6" style="padding: 10px;">
+              <div>
+                <%= f.text_field :last_name, placeholder: "Last name", class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="6" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.email_field :email, placeholder: "Email", class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+            <td colspan="6" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.password_field :password, placeholder: "Password",class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="12" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.text_field :telephone, placeholder: "Telephone", class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="12" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.label :avatar %>
+                <%= f.file_field :avatar %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4 style="margin-top: 30px;">Address</h4>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.text_field :apartment_number, placeholder: "Apartment number", class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+            <td colspan="4" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.text_field :street_number, placeholder: "Street number",class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+            <td colspan="4" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.text_field :street, placeholder: "Street", class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.text_field :city, placeholder: "City", class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+            <td colspan="4" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.text_field :state, placeholder: "State", class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+            <td colspan="4" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.text_field :country, placeholder: "Country", class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4 style="margin-top: 30px;">Shop Information</h4>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="12" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.text_field :shop_name, placeholder: "Shop name", class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="12" style="border-top: 0px; padding: 10px;">
+              <div>
+                <%= f.text_field :description, placeholder: "Description", class: "login-input-field login-input-form" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div colspan="12" style="border-top: 0px; padding: 2px;">
+                <%= f.submit "Edit account", class: "btn-primary buy-btn" %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
     </div>
 
-    <div class="row ">
-      <div id="menu_items">
-        <% @user.menu_items.each do |items| %>
-        <%= render "/menu_items/show_items", items: items %>
-        <% end %>
+    <div class="tab-pane fade in" id="add_menu_item" role="tabpanel">
+
+      <div class="row reports-in">
+        <%= render "add_menu_items"%>
+      </div>
+
+      <div class="container">
+      <div class="row" style="background-color:#FAF9F0; border-radius: 3px;">
+        <div id="menu_items">
+          <div class="container">
+
+              <h4 style="text-align:center; padding: 20px 0px; border-bottom: 1px solid #fff;">Your Menu</h4>
+              <% @user.menu_items.each do |items| %>
+                <%= render "/menu_items/show_items", items: items %>
+              <% end %>
+          </div>
+        </div>
       </div>
     </div>
 
+    </div>
   </div>
-</div>
 </div>

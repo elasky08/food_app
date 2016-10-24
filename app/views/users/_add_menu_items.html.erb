@@ -1,9 +1,14 @@
 <div class="container">
-
-
 <%= form_for [@user, @menu_items], remote: true, authenticity_token: true do |menu| %>
 
 <table class="table table-responsive" style="border: 0px;">
+  <thead>
+    <tr>
+      <td>
+        <h4 style="margin-top: 30px;">Add Menu Item</h4>
+      </td>
+    </tr>
+  </thead>
   <tr>
     <td colspan="6" style="padding: 10px;">
       <div>

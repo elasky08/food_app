@@ -1,7 +1,21 @@
 <div id="<%= dom_id(items) %>">
-  <%= image_tag items.image if items.image.present? %>
-  <%= items.food_name %>
-  <%= items.description %>
-  <%= items.price %>
-  <%= link_to "delete", menu_item_path(items), method: :delete, data: {confirm: "Are you sure?"} %>
+  <table class="table table-responsive" style="border-bottom: 1px solid #fff; table-layout: fixed;">
+    <tr>
+      <td colspan="2" style="border-top: 0px; padding: 10px;">
+        <%= image_tag items.image, class: "food-image" if items.image.present? %>
+      </td>
+      <td colspan="2" style="border-top: 0px; padding: 10px;">
+        <p><%= items.food_name %></p>
+      </td>
+      <td colspan="1" style="border-top: 0px; padding: 10px;">
+        <p>$<%= items.price %></p>
+      </td>
+      <td colspan="6" style="border-top: 0px; padding: 10px;">
+        <p><%= items.description %></p>
+      </td>
+      <td colspan="1" style="border-top: 0px; padding: 10px;">
+        <%= link_to "Delete", menu_item_path(items), method: :delete, data: {confirm: "Are you sure?"}, class: "btn-primary buy-btn" %>
+      </td>
+    </tr>
+  </table>
 </div>
