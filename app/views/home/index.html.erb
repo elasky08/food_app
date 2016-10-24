@@ -32,7 +32,7 @@
   <div class="row">
     <% @menu_item[0...4].each do |menu| %>
     <div class="col-sm-3 feature-box">
-        <%= link_to user_path(menu) do %>
+        <%= link_to user_path(menu.user_id) do %>
           <%= image_tag menu.image, class: "height-feature-photo" %>
           <h4 class="add-margin-to-feature-food"><%= menu.food_name %></h4>
         <% end %>
